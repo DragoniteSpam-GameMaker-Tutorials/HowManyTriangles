@@ -19,8 +19,6 @@ self.format_v = vertex_format_end();
 #macro simple_shader:FORMAT                 self.format_v
 #macro large_terrain_simple_shader:FORMAT   self.format_v
 
-show_debug_overlay(true);
-
 self.vertex_buffers = [];
 self.vertices = 0;
 
