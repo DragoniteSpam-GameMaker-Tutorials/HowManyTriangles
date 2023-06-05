@@ -1,0 +1,12 @@
+{
+  "FolderOrderSettings": [],
+  "ResourceOrderSettings": [
+    {"name":"spr_terrain","order":23,"path":"sprites/spr_terrain/spr_terrain.yy",},
+    {"name":"shd_demo_simple","order":8,"path":"shaders/shd_demo_simple/shd_demo_simple.yy",},
+    {"name":"obj_camera","order":4,"path":"objects/obj_camera/obj_camera.yy",},
+    {"name":"fnt_default","order":25,"path":"fonts/fnt_default/fnt_default.yy",},
+    {"name":"shd_demo","order":6,"path":"shaders/shd_demo/shd_demo.yy",},
+    {"name":"surface_validate","order":24,"path":"scripts/surface_validate/surface_validate.yy",},
+    {"name":"Room1","order":5,"path":"rooms/Room1/Room1.yy",},
+  ],
+}
