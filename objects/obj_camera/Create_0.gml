@@ -38,3 +38,12 @@ for (var i = 0; i < 100; i++) {
 self.async_buffer = buffer_create(1, buffer_grow, 1);
 buffer_load_async(self.async_buffer, self.to_load[0], 0, -1);
 array_delete(self.to_load, 0, 1);
+
+var info = os_get_info();
+// theres a lot of ways this can go wrong lol
+try {
+    //                      Windows                                *nix
+    self.gpu_data = info[? "video_adapter_description"] ?? info[? "gl_renderer_string"];
+} catch (e) {
+    self.gpu_data = "idk lol";
+}
