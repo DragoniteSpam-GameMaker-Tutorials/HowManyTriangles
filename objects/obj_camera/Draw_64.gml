@@ -21,6 +21,16 @@ draw_text(32, 96, "Vertices: " + string_format_commas(self.vertices));
 draw_text(32, 128, "Triangles: " + string_format_commas(self.vertices / 3));
 
 if (array_length(self.vertex_buffers) == 0) {
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_set_colour(c_white);
+    var ellipses = string_repeat(".", ((current_time div 300) % 3) + 1);
+    draw_text(display_get_gui_width() div 2, display_get_gui_height() div 2, $"Loading terrain{ellipses}");
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+}
+
+if (self.gpu_data != -1) {
     draw_set_colour(c_black);
     draw_set_alpha(0.5);
     draw_rectangle(0, display_get_gui_height() - 96, 960, display_get_gui_height(), false);
