@@ -4,6 +4,10 @@
 #macro simple_shader:BASE_FILE_NAME                 "compressed/Terrain_1024_v"
 #macro large_terrain_simple_shader:BASE_FILE_NAME   "compressed/Terrain_5400_v"
 
+#macro FILE_COUNT                                   1
+#macro large_terrain:FILE_COUNT                     5
+#macro large_terrain_simple_shader:FILE_COUNT       5
+
 vertex_format_begin();
 vertex_format_add_position_3d();
 vertex_format_add_normal();
@@ -24,8 +28,8 @@ self.vertices = 0;
 
 self.to_load = [];
 
-for (var i = 0; i < 100; i++) {
-    for (var j = 0; j < 100; j++) {
+for (var i = 0; i < FILE_COUNT; i++) {
+    for (var j = 0; j < FILE_COUNT; j++) {
         var filename = BASE_FILE_NAME + "." + string(i) + "_" + string(j) + ".vbuff";
         if (!file_exists(filename)) break;
         
