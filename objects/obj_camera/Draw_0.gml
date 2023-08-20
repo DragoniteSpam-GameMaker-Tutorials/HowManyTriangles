@@ -23,6 +23,8 @@
 #macro simple_shader:SHADER                 shd_demo_simple
 #macro large_terrain_simple_shader:SHADER   shd_demo_simple
 
+draw_clear(c_black);
+
 var cam = camera_get_active();
 
 camera_set_view_mat(cam, matrix_build_lookat(FROM_X, FROM_Y, FROM_Z, TO_X, TO_Y, TO_Z, 0, 0, 1));
