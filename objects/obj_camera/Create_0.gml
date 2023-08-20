@@ -41,7 +41,7 @@ var info = os_get_info();
 // theres a lot of ways this can go wrong lol
 try {
     //                      Windows                                *nix
-    self.gpu_data = (info[? "video_adapter_description"] ?? info[? "gl_renderer_string"]) ?? "info not available (web?)";
+    self.gpu_data = (info[? "video_adapter_description"] ?? info[? "gl_renderer_string"]) ?? -1;
 } catch (e) {
-    self.gpu_data = "idk lol";
+    self.gpu_data = -1;
 }

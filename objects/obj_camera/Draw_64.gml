@@ -20,10 +20,12 @@ draw_text(32, 64, "fps_real: " + string(fps_real));
 draw_text(32, 96, "Vertices: " + string_format_commas(self.vertices));
 draw_text(32, 128, "Triangles: " + string_format_commas(self.vertices / 3));
 
-draw_set_colour(c_black);
-draw_set_alpha(0.5);
-draw_rectangle(0, display_get_gui_height() - 96, 960, display_get_gui_height(), false);
-draw_set_alpha(1);
-draw_set_colour(c_white);
-draw_text(32, display_get_gui_height() - 48, $"GameMaker version: {GM_runtime_version}");
-draw_text(32, display_get_gui_height() - 80, $"GPU model: {self.gpu_data}");
+if (array_length(self.vertex_buffers) == 0) {
+    draw_set_colour(c_black);
+    draw_set_alpha(0.5);
+    draw_rectangle(0, display_get_gui_height() - 96, 960, display_get_gui_height(), false);
+    draw_set_alpha(1);
+    draw_set_colour(c_white);
+    draw_text(32, display_get_gui_height() - 48, $"GameMaker version: {GM_runtime_version}");
+    draw_text(32, display_get_gui_height() - 80, $"GPU model: {self.gpu_data}");
+}
