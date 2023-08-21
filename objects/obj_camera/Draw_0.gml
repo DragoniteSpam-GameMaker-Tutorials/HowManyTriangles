@@ -1,22 +1,18 @@
 #macro FROM_X                               0
 #macro FROM_Y                               0
 #macro FROM_Z                               (1000 / 4)
-#macro TO_X                                 (1000 / 2)
-#macro TO_Y                                 (1000 / 2)
-#macro TO_Z                                 (-1000 / 4)
+#macro TO_X                                 1000
+#macro TO_Y                                 1000
+#macro TO_Z                                 (-1000 / 3)
 
-#macro large_terrain:FROM_X                 0
-#macro large_terrain:FROM_Y                 0
 #macro large_terrain:FROM_Z                 (5000 / 4)
-#macro large_terrain:TO_X                   (5000 / 2)
-#macro large_terrain:TO_Y                   (5000 / 2)
-#macro large_terrain:TO_Z                   (-5000 / 4)
+#macro large_terrain:TO_X                   5000
+#macro large_terrain:TO_Y                   5000
+#macro large_terrain:TO_Z                   (-5000 / 3)
 
-#macro large_terrain_simple_shader:FROM_X   0
-#macro large_terrain_simple_shader:FROM_Y   0
 #macro large_terrain_simple_shader:FROM_Z   (5000 / 4)
-#macro large_terrain_simple_shader:TO_X     (5000 / 2)
-#macro large_terrain_simple_shader:TO_Y     (5000 / 2)
+#macro large_terrain_simple_shader:TO_X     5000
+#macro large_terrain_simple_shader:TO_Y     5000
 #macro large_terrain_simple_shader:TO_Z     (-5000 / 4)
 
 #macro SHADER                               shd_demo
@@ -27,7 +23,16 @@ draw_clear(c_black);
 
 var cam = camera_get_active();
 
-camera_set_view_mat(cam, matrix_build_lookat(FROM_X, FROM_Y, FROM_Z, TO_X, TO_Y, TO_Z, 0, 0, 1));
+var to_x = mean(TO_X, FROM_X);
+var to_y = mean(TO_Y, FROM_Y);
+var to_z = mean(TO_Z, FROM_Z);
+var d = point_distance(FROM_X, FROM_Y, to_x, to_y);
+var t = current_time / 100;
+var from_x =  d * dcos(t) + to_x;
+var from_y = -d * dsin(t) + to_y;
+var from_z = FROM_Z;
+
+camera_set_view_mat(cam, matrix_build_lookat(from_x, from_y, from_z, to_x, to_y, to_z, 0, 0, 1));
 camera_set_proj_mat(cam, matrix_build_projection_perspective_fov(-60, -16 / 9, 1, 16000));
 camera_apply(cam);
 
